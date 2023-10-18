@@ -8,8 +8,9 @@ export const HomePage = () => {
 
     const [carWashes, setCarWashes] = useState<[] | CarWash[]>([]);
 
-    function test(name: string, address: string) {
-        alert(name + ": " + address)
+    const handleListItemData = (id: number) => {
+        alert("id: " + id)
+
     }
 
     useEffect(() => {
@@ -23,9 +24,9 @@ export const HomePage = () => {
         <Box display="flex" alignItems="center" justifyContent="center">
             <List>
                 {carWashes.map((carWash: CarWash) => (
-                    <ListItem>
+                    <ListItem key={carWash.id}>
                         <ListItemButton onClick={(event) => {
-                            test(carWash.name, carWash.address)
+                            handleListItemData(carWash.id)
                         }}>
                             <ListItemIcon>
                                 <ListItemAvatar>
